@@ -73,8 +73,8 @@ public class Solution {
             int arraySize = sc.nextInt();
             int jumpLength = sc.nextInt();
             sc.nextLine();
-            String[] gameArray = sc.nextLine().split(" ");
-            if (isPossibleToWin(gameArray, arraySize, jumpLength, 0, 0)) {
+            String gameArray = sc.nextLine();
+            if (playGame( arraySize, jumpLength, gameArray)) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
