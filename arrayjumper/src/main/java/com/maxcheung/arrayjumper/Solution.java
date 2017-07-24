@@ -1,3 +1,5 @@
+package com.maxcheung.arrayjumper;
+
 import java.util.Scanner;
 
 public class Solution {
