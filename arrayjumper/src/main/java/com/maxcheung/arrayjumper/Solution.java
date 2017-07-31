@@ -1,24 +1,52 @@
+/**
+ * Array jumper puzzle
+ */
 package com.maxcheung.arrayjumper;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Solution {
+/**
+ * @author MAX
+ *
+ */
+public final class Solution {
 
     private static final String ZERO = "0";
 
-    private Solution(){
-        
-    }
-    static boolean playGame(int arrayLength, int jumpLength, String data ) {
-        String[] gameArray = data.split(" ");
-        if (gameArray.length != arrayLength) {
-            throw new IllegalArgumentException("Mismatch with array length provided: " + arrayLength + " with actual length:  " + gameArray.length);
-        }
-        return isPossibleToWin(gameArray, arrayLength, jumpLength, 0 , 0);
+    private Solution() {
     }
 
-    private static boolean isPossibleToWin(String[] dataArray, int arrayLength, int jumpLength, int currentPos, int lastJumpPos) {
+    /**
+     * @param arrayLength
+     * @param jumpLength
+     * @param data
+     * @return
+     */
+    static boolean playGame(int arrayLength, int jumpLength, String data) {
+        String[] gameArray = data.split(" ");
+        if (gameArray.length != arrayLength) {
+            throw new IllegalArgumentException("Mismatch with array length provided: " + arrayLength
+                    + " with actual length:  " + gameArray.length);
+        }
+        return isPossibleToWin(gameArray, arrayLength, jumpLength, 0, 0);
+    }
+
+    /**
+     * @param dataArray
+     *            the data for the puzzle
+     * @param arrayLength
+     *            the length of array
+     * @param jumpLength
+     *            the length to jump for next step
+     * @param currentPos
+     *            current position
+     * @param lastJumpPos
+     *            position from last jump
+     * @return true if it is possible to win game
+     */
+    private static boolean isPossibleToWin(final String[] dataArray, final int arrayLength, final int jumpLength,
+            final int currentPos, final int lastJumpPos) {
 
         boolean didWin = false;
 
@@ -29,8 +57,7 @@ public class Solution {
         System.out.println(currentPos);
         System.out.println(lastJumpPos);
         System.out.println("------------------------------");
-        
-        
+
         int highRange = stepForward(dataArray, arrayLength, currentPos);
         if (highRange == arrayLength - 1)
             return true;
@@ -50,6 +77,12 @@ public class Solution {
         return didWin;
     }
 
+    /**
+     * @param dataArray
+     * @param arrayLength
+     * @param currentPos
+     * @return
+     */
     private static int stepForward(String[] dataArray, int arrayLength, int currentPos) {
         int i = currentPos;
 
@@ -71,7 +104,7 @@ public class Solution {
         return (currentPos + 1) >= arrayLength;
     }
 
-    private static boolean canJumpToGoal( int arrayLength, int jumpLength, int currentPos) {
+    private static boolean canJumpToGoal(int arrayLength, int jumpLength, int currentPos) {
         return (currentPos + jumpLength) >= arrayLength;
     }
 
@@ -84,7 +117,7 @@ public class Solution {
             int jumpLength = sc.nextInt();
             sc.nextLine();
             String gameArray = sc.nextLine();
-            if (playGame( arraySize, jumpLength, gameArray)) {
+            if (playGame(arraySize, jumpLength, gameArray)) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
