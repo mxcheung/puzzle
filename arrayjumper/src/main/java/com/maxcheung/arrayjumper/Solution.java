@@ -1,5 +1,6 @@
 package com.maxcheung.arrayjumper;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution {
@@ -21,6 +22,15 @@ public class Solution {
 
         boolean didWin = false;
 
+        System.out.println("------------------------------");
+        System.out.println(Arrays.toString(dataArray));
+        System.out.println(arrayLength);
+        System.out.println(jumpLength);
+        System.out.println(currentPos);
+        System.out.println(lastJumpPos);
+        System.out.println("------------------------------");
+        
+        
         int highRange = stepForward(dataArray, arrayLength, currentPos);
         if (highRange == arrayLength - 1)
             return true;
